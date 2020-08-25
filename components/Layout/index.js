@@ -26,9 +26,7 @@ class Layout extends Component {
 
     render() {
         return (
-            <div style={{
-                height: '100vh'
-            }}>
+            <>
                 <AppBar position="fixed" style={{
                     boxShadow: 'none'
                 }}>
@@ -91,15 +89,13 @@ class Layout extends Component {
                         }
                     </Toolbar>
                 </AppBar>
-                <Container style={{
-                    height: '100%'
-                }}>
+                <Container>
                     <Toolbar style={{
                         marginTop: 20
                     }}/>
                     {this.props.children}
                 </Container>
-            </div>
+            </>
         );
     }
 }

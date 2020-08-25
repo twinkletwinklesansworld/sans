@@ -8,7 +8,16 @@ export default async (req, res) => {
     }
     if (!req.headers.authorization) return res.status(401).json({error: 'No token provided'})
     if (!req.headers.authorization.startsWith('Bearer ')) return res.status(401).json({error: 'Invalid token'})
-    const decoded = jwt.verify(req.headers.authorization.slice('Bearer '.length), process.env.JWT_KEY)
+
+    let decoded
+
+    try {
+        decoded = jwt.verify(req.headers.authorization.slice('Bearer '.length), process.env.JWT_KEY)
+    } catch (e) {
+        return res.json({
+            error: 'Invalid Token'
+        })
+    }
 
     if (decoded) {
         const db = await connectDB()

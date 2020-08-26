@@ -1,11 +1,12 @@
+import jwt from "jsonwebtoken";
 import {connectDB} from "../../../utils/db";
-import jwt from 'jsonwebtoken'
 import r from 'rethinkdb'
 
 export default async (req, res) => {
-    if (req.method !== 'GET') {
-        return res.status(405).json({error: 'this method is not allowed'})
-    }
+    if (req.method !== 'PATCH') return res.status(405).json({
+        error: 'method must be PATCH'
+    })
+
     if (!req.headers.authorization) return res.status(401).json({error: 'No token provided'})
     if (!req.headers.authorization.startsWith('Bearer ')) return res.status(401).json({error: 'Invalid token'})
 
@@ -19,17 +20,21 @@ export default async (req, res) => {
         })
     }
 
-    if (decoded) {
-        const db = await connectDB()
-        const u = await r.table('users').get(decoded.id).without('password').without('salt').run(db)
-        if (!u) {
-            return res.status(401).json({error: 'Invalid token'})
-        } else {
-            return res.status(200).json(u)
-        }
-    } else {
-        return res.status(401).json({error: 'Invalid token'})
+    if (!decoded.id) {
+        return res.json({error: 'Invalid token'})
     }
 
+    const b = req.body
 
+    let toUpdate = {}
+
+    if (b.avatar) {
+        toUpdate.avatar = b.avatar
+    }
+
+    const db = await connectDB()
+
+    await r.table('users').get(decoded.id).update(toUpdate).run(db)
+
+    res.json({success: true})
 }

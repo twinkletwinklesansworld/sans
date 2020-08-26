@@ -5,26 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58b50f5e-51dc-4ba4-adca-2a1f30966915" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/Layout/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/_document.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/u/[id]/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/user/identify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/user/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/user/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/signup.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/u/[id]/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/UserUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/user/update.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/me/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Layout/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Layout/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/_app.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/_app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/hello.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/[name].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/user/identify.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/user/identify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -68,12 +58,12 @@
     <property name="ts.external.directory.path" value="F:\Program Files\JetBrains\apps\WebStorm\ch-0\202.6397.88\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="G:\twinkletwinklesansworld\pages\u\[id]" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="G:\twinkletwinklesansworld\pages\api\user" />
       <recent name="G:\twinkletwinklesansworld\pages" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\twinkletwinklesansworld\pages\u\[id]" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -108,7 +98,9 @@
       <workItem from="1598269276518" duration="1277000" />
       <workItem from="1598270589345" duration="344000" />
       <workItem from="1598270939824" duration="3805000" />
-      <workItem from="1598311015007" duration="1795000" />
+      <workItem from="1598311015007" duration="9835000" />
+      <workItem from="1598397854277" duration="211000" />
+      <workItem from="1598404706044" duration="14758000" />
     </task>
     <servers />
   </component>
@@ -128,17 +120,18 @@
       <screen x="0" y="40" width="3072" height="1688" />
     </state>
     <state x="847" y="853" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598095874145" />
-    <state x="1045" y="529" key="SettingsEditor" timestamp="1598230340587">
+    <state x="1045" y="529" key="SettingsEditor" timestamp="1598351453858">
       <screen x="0" y="40" width="3072" height="1688" />
     </state>
-    <state x="1045" y="529" key="SettingsEditor/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598230340587" />
+    <state x="1045" y="529" key="SettingsEditor/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598351453858" />
     <state x="1092" y="416" key="run.anything.popup" timestamp="1598236486193">
       <screen x="0" y="40" width="3072" height="1688" />
     </state>
     <state x="1092" y="416" key="run.anything.popup/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598236486193" />
-    <state x="1199" y="426" width="672" height="678" key="search.everywhere.popup" timestamp="1598270564600">
-      <screen x="0" y="40" width="3072" height="1688" />
+    <state x="4589" y="278" width="672" height="418" key="search.everywhere.popup" timestamp="1598422309511">
+      <screen x="3840" y="40" width="1920" height="1040" />
     </state>
-    <state x="1199" y="426" width="672" height="678" key="search.everywhere.popup/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598270564600" />
+    <state x="1199" y="426" width="672" height="678" key="search.everywhere.popup/0.40.3072.1688/3840.40.1920.1040@0.40.3072.1688" timestamp="1598333887158" />
+    <state x="4589" y="278" width="672" height="418" key="search.everywhere.popup/0.40.3072.1688/3840.40.1920.1040@3840.40.1920.1040" timestamp="1598422309511" />
   </component>
 </project>

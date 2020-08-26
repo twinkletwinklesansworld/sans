@@ -17,7 +17,7 @@ class Login extends Component {
     render() {
         return (
             <Layout {...this.props}>
-                <Grid container style={{height: '100%'}} direction="row" alignItems="center" justify="center" alignContent="center">
+                <Grid container direction="row" alignItems="center" justify="center" alignContent="center">
                     <Grid item xs={12} md={6}>
                         <Card style={{marginTop: 100}}>
                             <CardContent>

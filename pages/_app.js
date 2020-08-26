@@ -14,26 +14,28 @@ class RootApp extends Component {
         if (jssStyles) {
             jssStyles.parentNode.removeChild(jssStyles);
         }
-        if (localStorage.getItem('token')) {
-            const data = await (await fetch('/api/user/identify', {
-                headers: {
-                    Authorization: 'Bearer ' + localStorage.getItem('token')
-                }
-            })).json()
-            this.setState({user: data})
-        }
+        await this.update.bind(this)()
     }
 
     async componentDidUpdate(prevProps, prevState, snapshot) {
-        if (!this.state.user) {
-            if (localStorage.getItem('token')) {
-                const data = await (await fetch('/api/user/identify', {
-                    headers: {
-                        Authorization: 'Bearer ' + localStorage.getItem('token')
-                    }
-                })).json()
-                this.setState({user: data})
+        if (!this.state.user) await this.update.bind(this)()
+    }
+
+    async update() {
+        if (localStorage.getItem('token')) {
+            const data = await (await fetch('/api/user/identify', {
+                headers: {
+                    Authorization: 'Bearer ' + encodeURIComponent(localStorage.getItem('token'))
+                }
+            })).json()
+            if (data.error) {
+                alert('오류로 로그아웃 되었습니다: ' + data.error)
+                localStorage.removeItem('token')
+                this.setState({
+                    user: undefined
+                })
             }
+            this.setState({user: data})
         }
     }
 
@@ -55,7 +57,6 @@ class RootApp extends Component {
         return (
             <MuiThemeProvider theme={theme}>
                 <Head>
-
                     <title>반짝반짝샌즈월드</title>
                     <meta charSet="utf-8"/>
                     <meta name="viewport"
@@ -67,7 +68,8 @@ class RootApp extends Component {
                 <CssBaseline/>
                 <NextProgress color="#000"/>
                 <SnackbarProvider maxSnack={4}>
-                    <Component state={this.state} setState={this.setState.bind(this)} {...other} />
+                    <Component reloadUser={this.update.bind(this)} state={this.state}
+                               setState={this.setState.bind(this)} {...other} />
                 </SnackbarProvider>
             </MuiThemeProvider>
         );

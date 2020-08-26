@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import {connectDB} from "../../../utils/db";
 import r from 'rethinkdb'
+import crypto from "crypto";
 
 export default async (req, res) => {
     if (req.method !== 'PATCH') return res.status(405).json({
@@ -26,13 +27,41 @@ export default async (req, res) => {
 
     const b = req.body
 
+    const db = await connectDB()
+
+    const u = await r.table('users').get(decoded.id).run(db)
+
     let toUpdate = {}
 
     if (b.avatar) {
         toUpdate.avatar = b.avatar
     }
 
-    const db = await connectDB()
+    if (b.username) {
+        toUpdate.username = b.username
+    }
+
+    if (b.email) {
+        toUpdate.email = b.email
+    }
+
+    if (b.password && b.newPassword) {
+        const password = crypto.createHash('md5').update(u.salt + req.body.password).digest('base64')
+
+        if (password !== u.password) {
+            return res.json({
+                error: 'Invalid password'
+            })
+        }
+
+
+        const salt = crypto.randomBytes(128).toString('hex')
+
+        toUpdate.salt = salt
+
+        toUpdate.password = crypto.createHash('md5').update(salt + req.body.password).digest('base64')
+    }
+
 
     await r.table('users').get(decoded.id).update(toUpdate).run(db)
 

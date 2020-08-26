@@ -12,7 +12,7 @@ export default async (req, res) => {
         return res.json(err)
     }
 
-    const salt = crypto.randomBytes(1024).toString('hex')
+    const salt = crypto.randomBytes(128).toString('hex')
 
     const password = crypto.createHash('md5').update(salt + req.body.password).digest('base64')
 

@@ -16,10 +16,15 @@ export default async (req, res) => {
     const conn = await connectDB()
 
 
-    const u = await r.table('users').get(req.body.id).run(conn)
+    let u = await r.table('users').get(req.body.id).run(conn)
 
     if (!u) {
-        return res.json({error: '아이디나 비밀번호가 일치하지 않습니다.'})
+        const searched = await (await r.table('users').filter({email: req.body.id}).run(conn)).toArray()
+
+        u = searched[0]
+        if (!u) {
+            return res.json({error: '아이디나 비밀번호가 일치하지 않습니다.'})
+        }
     }
 
     const password = crypto.createHash('md5').update(u.salt + req.body.password).digest('base64')

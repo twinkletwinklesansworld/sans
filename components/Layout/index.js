@@ -9,7 +9,7 @@ import Popover from "@material-ui/core/Popover";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import {LockOpen, Person} from "@material-ui/icons";
+import {LockOpen, Person, Settings} from "@material-ui/icons";
 
 
 class Layout extends Component {
@@ -64,6 +64,14 @@ class Layout extends Component {
                                                                 <Person/>
                                                             </ListItemIcon>
                                                             <ListItemText primary="프로필"/>
+                                                        </ListItem>
+                                                    </Link>
+                                                    <Link href="/me">
+                                                        <ListItem button>
+                                                            <ListItemIcon>
+                                                                <Settings/>
+                                                            </ListItemIcon>
+                                                            <ListItemText primary="마이페이지"/>
                                                         </ListItem>
                                                     </Link>
                                                     <ListItem button onClick={() => {

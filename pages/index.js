@@ -40,6 +40,13 @@ export default function Home(props) {
                         </CardContent>
                     </Card>
                 </Grid>
+             <Grid item xs={12} md={6}>
+                    <Card>
+                        <CardContent>
+                            공지사항
+                        </CardContent>
+                    </Card>
+                </Grid>
             </Grid>
         </Layout>
     )

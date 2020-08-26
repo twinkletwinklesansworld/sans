@@ -24,8 +24,8 @@ class Login extends Component {
                             <CardContent>
                                 <Typography variant="h6" align="center">로그인</Typography>
                                 <Grid item>
-                                    <TextField color="secondary" required onChange={e => this.setState({id: e.target.value})} label="아이디 또는 이메일" type="email" fullWidth style={{marginBottom: 10}}/>
-                                    <TextField color="secondary" required onChange={e => this.setState({password: e.target.value})} label="비밀번호" type="password" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.id} required onChange={e => this.setState({id: e.target.value})} label="아이디 또는 이메일" type="email" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.password} required onChange={e => this.setState({password: e.target.value})} label="비밀번호" type="password" fullWidth style={{marginBottom: 10}}/>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} md={6}>
                                             <Button variant="contained" color="primary" onClick={async () => {

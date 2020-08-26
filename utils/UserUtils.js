@@ -9,6 +9,9 @@ export async function validateSignup(data) {
     if (!data.password) return {error: '\'password\' 가 비어있습니다.'}
     if (typeof data.password !== 'string') return {error: '\`password\` must be string'}
     if (data.password === '') return {error: '\'password\' 가 비어있습니다'}
+    if (!data.email) return {error: '\'email\' 가 비어있습니다.'}
+    if (typeof data.email !== 'string') return {error: '\`email\` must be string'}
+    if (data.email === '') return {error: '\'email\' 가 비어있습니다'}
     const conn = await connectDB()
 
     if (await r.db(process.env.DB).table('users').get(data.id).run(conn)) {

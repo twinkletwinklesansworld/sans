@@ -23,7 +23,7 @@ export default async (req, res) => {
 
         u = searched[0]
         if (!u) {
-            return res.json({error: '아이디나 비밀번호가 일치하지 않습니다.'})
+            return res.json({error: '아이디/이메일 또는 비밀번호가 일치하지 않습니다.'})
         }
     }
 

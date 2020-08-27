@@ -3,7 +3,7 @@ import r from 'rethinkdb'
 
 export default async (req, res) => {
     const db = await connectDB()
-    const u = await r.table('users').get(req.query.id).run(db)
+    const u = await r.table('users').get(req.query.id).without('password').without('salt').run(db)
     if (!u) {
         return res.status(401).json({error: 'Invalid user'})
     } else {
@@ -18,8 +18,7 @@ export default async (req, res) => {
         })
 
         return res.status(200).json({
-            id: u.id,
-            avatar: u.avatar || null,
+            ...u,
             roles: roleList
         })
     }

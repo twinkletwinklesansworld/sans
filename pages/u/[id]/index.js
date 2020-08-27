@@ -34,7 +34,6 @@ class Profile extends Component {
     render() {
         const user = this.state.data
         const loading = !this.state.data && this.state.loading
-        console.log(user)
 
         return (
             <Layout {...this.props}>

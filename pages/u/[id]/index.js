@@ -5,6 +5,8 @@ import Card from "@material-ui/core/Card";
 import {Avatar, CardContent, Icon, Typography} from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
+import DialogActions from "@material-ui/core/DialogActions";
+import Button from "@material-ui/core/Button";
 
 class Profile extends Component {
     componentDidMount() {
@@ -34,6 +36,7 @@ class Profile extends Component {
     render() {
         const user = this.state.data
         const loading = !this.state.data && this.state.loading
+        const u = this.props.state.user
 
         return (
             <Layout {...this.props}>
@@ -76,6 +79,13 @@ class Profile extends Component {
                                                 </Grid>
                                             </Grid>
                                         </CardContent>
+                                        {
+                                            u && <DialogActions>
+                                                <Button>
+                                                    팔로우
+                                                </Button>
+                                            </DialogActions>
+                                        }
                                     </Card>
                                 </Grid>
                             </Grid>

@@ -21,10 +21,11 @@ export default async (req, res) => {
 
     if (decoded) {
         const db = await connectDB()
-        const u = await r.table('users').get(decoded.id).without('password').without('salt').run(db)
+        let u = await r.table('users').get(decoded.id).run(db)
         if (!u) {
             return res.status(401).json({error: 'Invalid token'})
         } else {
+            let u = await r.table('users').get(decoded.id).without('password').without('salt').run(db)
             return res.status(200).json(u)
         }
     } else {

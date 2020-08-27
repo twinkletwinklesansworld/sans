@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Axios from "axios";
 import UserEditSection from "./UserEditSection";
+import DeleteUser from "./DeleteUser";
 
 function Me(props) {
     const u = props.state.user
@@ -49,6 +50,7 @@ function Me(props) {
                                         </Grid>
                                     </Grid>
                                     <UserEditSection u={u} {...props}/>
+                                    <DeleteUser {...props}/>
                                 </Grid>
                             </Grid>
                             <Dialog open={avatarOpen}>

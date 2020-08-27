@@ -32,7 +32,7 @@ class RootApp extends Component {
                 alert('오류로 로그아웃 되었습니다: ' + data.error)
                 localStorage.removeItem('token')
                 this.setState({
-                    user: undefined
+                    user: null
                 })
             }
             this.setState({user: data})

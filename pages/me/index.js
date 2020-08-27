@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import TextField from "@material-ui/core/TextField";
 import {useSnackbar} from "notistack";
+import Axios from "axios";
 
 function Me(props) {
     const u = props.state.user
@@ -127,15 +128,17 @@ function Me(props) {
                                 <DialogTitle>프로필 사진 변경</DialogTitle>
                                 <DialogContent>
                                     <input type="file" accept="image/*" ref={avatarRef} style={{display: 'none'}}
-                                           onChange={e => {
+                                           onChange={async e => {
                                                e.stopPropagation()
                                                e.preventDefault()
                                                const f = e.target.files[0]
-                                               const reader = new FileReader()
-                                               reader.addEventListener('load', () => {
-                                                   setAvatarURL(reader.result)
-                                               })
-                                               if (f) reader.readAsDataURL(f)
+                                               const data = new FormData()
+                                               data.append('file', f)
+                                               setAvatarURL((await Axios.post('/api/upload', data, {
+                                                   headers: {
+                                                       'Content-Type': 'multipart/form-data'
+                                                   }
+                                               })).data.url)
                                            }}/>
                                     <Avatar onClick={() => !avatarUpdating && avatarRef.current.click()} src={avatarURL}
                                             style={{

@@ -75,21 +75,21 @@ function Me(props) {
                                     <Grid item style={{width: '100%'}}>
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} md={6}>
-                                                <TextField disabled={updating} label="닉네임"
+                                                <TextField disabled={updating} label="닉네임을 입력해 주세욤!"
                                                            variant="outlined" fullWidth value={username}
                                                            onChange={e => setUsername(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
-                                                <TextField label="이메일" disabled={updating} type="email" variant="outlined"
+                                                <TextField label="이메일을 입력해 주세욤!" disabled={updating} type="email" variant="outlined"
                                                             fullWidth value={email}
                                                            onChange={e => setEmail(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
-                                                <TextField label="비밀번호" variant="outlined" disabled={updating} fullWidth type="password"
+                                                <TextField label="비밀번호를 입력해 주세욤!" variant="outlined" disabled={updating} fullWidth type="password"
                                                            onChange={e => setPassword(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
-                                                <TextField label="새 비밀번호" variant="outlined" fullWidth disabled={updating} type="password"
+                                                <TextField label="새 비밀번호를 입력해 주세욤!" variant="outlined" fullWidth disabled={updating} type="password"
                                                            onChange={e => setNewPassword(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12}>
@@ -111,7 +111,7 @@ function Me(props) {
                                                         })
                                                         return setUpdating(false)
                                                     }
-                                                    snackbar.enqueueSnackbar('성공적으로 처리되었습니다.', {
+                                                    snackbar.enqueueSnackbar('성공적으로 처리되었어욤!', {
                                                         variant: 'success'
                                                     })
                                                     setUpdating(false)

@@ -88,7 +88,10 @@ class Profile extends Component {
                                         </CardContent>
                                         {
                                             u && this.props.router.query.id !== u.id && <DialogActions>
-                                                <Button color="primary" onClick={async () => {
+                                                <Button color={
+                                                    user.followers.includes(u.id) ?
+                                                        'secondary' : 'primary'
+                                                } onClick={async () => {
                                                     const data = await (await fetch(`/api/u/${this.props.router.query.id}/follow`, {
                                                         headers: {
                                                             Authorization: 'Bearer ' + localStorage.getItem('token')

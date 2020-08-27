@@ -22,8 +22,5 @@ export default async (req, res) => {
     if (!decoded.id) {
         return res.json({error: 'Invalid token'})
     }
-
-    const b = req.body
-
     const db = await connectDB()
 }

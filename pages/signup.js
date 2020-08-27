@@ -38,7 +38,8 @@ class Login extends Component {
                                                     method: 'POST',
                                                     body: JSON.stringify({
                                                         id: this.state.id,
-                                                        password: this.state.password
+                                                        password: this.state.password,
+                                                        email: this.state.email
                                                     }),
                                                     headers: {
                                                         'Content-Type': 'application/json'

@@ -24,12 +24,12 @@ class Login extends Component {
                             <CardContent>
                                 <Typography variant="h6" align="center">로그인</Typography>
                                 <Grid item>
-                                    <TextField color="secondary" value={this.state.id} required onChange={e => this.setState({id: e.target.value})} label="아이디 또는 이메일을 입력해 주세욤!" type="email" fullWidth style={{marginBottom: 10}}/>
-                                    <TextField color="secondary" value={this.state.password} required onChange={e => this.setState({password: e.target.value})} label="비밀번호를 입력해 주세욤!" type="password" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.id} required onChange={e => this.setState({id: e.target.value})} label="아이디 또는 이메일을 입력해줘" type="email" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.password} required onChange={e => this.setState({password: e.target.value})} label="비밀번호를 입력해!" type="password" fullWidth style={{marginBottom: 10}}/>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} md={6}>
                                             <Button variant="contained" color="primary" onClick={async () => {
-                                                this.props.enqueueSnackbar('처리중이에욤! 잠시만 기다려주세욤!', {
+                                                this.props.enqueueSnackbar('처리중이야! 조금만 기다려!', {
                                                     variant: 'info'
                                                 })
                                                 this.setState({processing: true})
@@ -52,7 +52,7 @@ class Login extends Component {
                                                     })
                                                 }
                                                 if (data.token) {
-                                                    this.props.enqueueSnackbar('로그인 완료~! 샌즈 월드를 즐겁게 이용해주세요!', {
+                                                    this.props.enqueueSnackbar('로그인 완료됬음! 샌즈 월드를 즐겁게 이용해주세요!', {
                                                         variant: 'success'
                                                     })
                                                     localStorage.setItem('token', data.token)

@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import {connectDB} from "../../../../utils/db";
+import r from 'rethinkdb'
 
 export default async (req, res) => {
     if (req.method !== 'GET') return res.status(405).json({
@@ -22,5 +23,22 @@ export default async (req, res) => {
     if (!decoded.id) {
         return res.json({error: 'Invalid token'})
     }
+
+    if (decoded.id === req.query.id) {
+        return res.json({error: 'Cannot follow myself'})
+    }
+
     const db = await connectDB()
+
+    if (!(await r.table('users').get(req.query.id).run(db))) {
+        return res.json({
+            error: 'Specified user does not exists'
+        })
+    }
+
+    const follow = (await (await r.table('follows').run(db)).toArray()).find(r => r.from === decoded.id && r.target === req.query.target)
+
+    console.log(follow)
+
+    return res.json({test: true})
 }

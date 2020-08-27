@@ -16,7 +16,7 @@ export default async (req, res) => {
 
     const password = crypto.createHash('md5').update(salt + req.body.password).digest('base64')
 
-    await r.table('users').insert({id: req.body.id, password, salt, roles: []}).run(await connectDB())
+    await r.table('users').insert({id: req.body.id, password, email: req.body.email, salt, roles: []}).run(await connectDB())
 
     res.json({status: 'success'})
 }

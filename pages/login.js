@@ -29,7 +29,7 @@ class Login extends Component {
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} md={6}>
                                             <Button variant="contained" color="primary" onClick={async () => {
-                                                this.props.enqueueSnackbar('처리중이에욤! 잠시만 기다려주세욤!', {
+                                                this.props.enqueueSnackbar('처리중이야! 조금만 기다려!', {
                                                     variant: 'info'
                                                 })
                                                 this.setState({processing: true})
@@ -52,7 +52,7 @@ class Login extends Component {
                                                     })
                                                 }
                                                 if (data.token) {
-                                                    this.props.enqueueSnackbar('로그인 완료~! 샌즈 월드를 즐겁게 이용해주세요!', {
+                                                    this.props.enqueueSnackbar('로그인 완료됬음! 샌즈 월드를 즐겁게 이용해주세요!', {
                                                         variant: 'success'
                                                     })
                                                     localStorage.setItem('token', data.token)

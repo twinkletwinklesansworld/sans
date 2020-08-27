@@ -85,11 +85,11 @@ function Me(props) {
                                                            onChange={e => setEmail(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
-                                                <TextField label="비밀번호" variant="outlined" disabled={updating} fullWidth value={password} type="password"
+                                                <TextField label="비밀번호" variant="outlined" disabled={updating} fullWidth type="password"
                                                            onChange={e => setPassword(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
-                                                <TextField label="새 비밀번호" variant="outlined" fullWidth disabled={updating} value={newPassword} type="password"
+                                                <TextField label="새 비밀번호" variant="outlined" fullWidth disabled={updating} type="password"
                                                            onChange={e => setNewPassword(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12}>

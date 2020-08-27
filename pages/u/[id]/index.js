@@ -58,7 +58,7 @@ class Profile extends Component {
                                                         팔로워 {user.followers.length}명
                                                     </Typography>
                                                     <Typography align="center">
-                                                        {user.followers.length}명 팔로우중
+                                                        {user.following.length}명 팔로우중
                                                     </Typography>
                                                 </Grid>
                                                 <Grid item>
@@ -88,7 +88,7 @@ class Profile extends Component {
                                         </CardContent>
                                         {
                                             u && this.props.router.query.id !== u.id && <DialogActions>
-                                                <Button onClick={async () => {
+                                                <Button color="primary" onClick={async () => {
                                                     const data = await (await fetch(`/api/u/${this.props.router.query.id}/follow`, {
                                                         headers: {
                                                             Authorization: 'Bearer ' + localStorage.getItem('token')

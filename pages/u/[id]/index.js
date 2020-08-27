@@ -89,11 +89,11 @@ class Profile extends Component {
                                         {
                                             u && this.props.router.query.id !== u.id && <DialogActions>
                                                 <Button onClick={async () => {
-                                                    const data = await (await fetch(`/api/u/${this.props.router.query.id}/follow`), {
+                                                    const data = await (await fetch(`/api/u/${this.props.router.query.id}/follow`, {
                                                         headers: {
                                                             Authorization: 'Bearer ' + localStorage.getItem('token')
                                                         }
-                                                    }).json()
+                                                    })).json()
                                                     if (data.error) {
                                                         this.props.enqueueSnackbar(data.error, {
                                                             variant: 'error'

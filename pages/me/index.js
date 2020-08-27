@@ -75,13 +75,13 @@ function Me(props) {
                                     <Grid item style={{width: '100%'}}>
                                         <Grid container spacing={2}>
                                             <Grid item xs={12} md={6}>
-                                                <TextField disabled={updating} label="닉네임" required={props.state.user.username}
+                                                <TextField disabled={updating} label="닉네임"
                                                            variant="outlined" fullWidth value={username}
                                                            onChange={e => setUsername(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>
                                                 <TextField label="이메일" disabled={updating} type="email" variant="outlined"
-                                                           required={props.state.user.email} fullWidth value={email}
+                                                            fullWidth value={email}
                                                            onChange={e => setEmail(e.target.value)}/>
                                             </Grid>
                                             <Grid item xs={12} md={6}>

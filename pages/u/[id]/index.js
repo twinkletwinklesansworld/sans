@@ -34,6 +34,7 @@ class Profile extends Component {
     render() {
         const user = this.state.data
         const loading = !this.state.data && this.state.loading
+        console.log(user)
 
         return (
             <Layout {...this.props}>
@@ -53,7 +54,7 @@ class Profile extends Component {
                                                 </Grid>
                                                 <Grid item>
                                                     <Typography variant="h5">
-                                                        {user.id}
+                                                        {user.username || user.id}
                                                     </Typography>
                                                     <AvatarGroup>
                                                         {

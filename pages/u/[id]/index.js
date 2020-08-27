@@ -33,7 +33,8 @@ export async function getServerSideProps(ctx) {
     } else {
         return {
             props: {
-                title: `유저 정보 - ${u.username || u.id}`
+                title: `유저 정보 - ${u.username || u.id}`,
+                thumbnail: u.avatar ? (ctx.req.connection.encrypted ? 'https://' : 'http://') + ctx.req.headers.host +  u.avatar : null
             }
         }
     }
@@ -73,6 +74,7 @@ class Profile extends Component {
             <>
                 <Head>
                     <title>{this.props.pageProps.title}</title>
+                    <meta name="og:image" content={this.props.pageProps.thumbnail}/>
                 </Head>
                 <Layout {...this.props}>
                     {loading ? 'Loading...' : <>

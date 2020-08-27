@@ -8,40 +8,16 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import TextField from "@material-ui/core/TextField";
-import {useSnackbar} from "notistack";
+import Axios from "axios";
+import UserEditSection from "./UserEditSection";
 
 function Me(props) {
     const u = props.state.user
 
     const [avatarOpen, setAvatarOpen] = React.useState(false)
     const [avatarUpdating, setAvatarUpdating] = React.useState(false)
-    const [updating, setUpdating] = React.useState(false)
     const [avatarURL, setAvatarURL] = React.useState('')
     const avatarRef = React.createRef()
-    const [username, setUsername] = React.useState(undefined)
-    const [email, setEmail] = React.useState(undefined)
-    const [password, setPassword] = React.useState(undefined)
-    const [newPassword, setNewPassword] = React.useState(undefined)
-
-    const snackbar = useSnackbar()
-
-    if (props.state.user) {
-        if (props.state.user.username) {
-            if (username === undefined) {
-                setUsername(props.state.user.username)
-            }
-        } else {
-            if (username === undefined) setUsername('')
-        }
-        if (props.state.user.email) {
-            if (email === undefined) {
-                setEmail(props.state.user.email)
-            }
-        } else {
-            if (email === undefined) setEmail('')
-        }
-    }
 
     return (
         <Layout {...props}>
@@ -72,70 +48,24 @@ function Me(props) {
                                             </Grid>
                                         </Grid>
                                     </Grid>
-                                    <Grid item style={{width: '100%'}}>
-                                        <Grid container spacing={2}>
-                                            <Grid item xs={12} md={6}>
-                                                <TextField disabled={updating} label="닉네임을 입력해 주세욤!"
-                                                           variant="outlined" fullWidth value={username}
-                                                           onChange={e => setUsername(e.target.value)}/>
-                                            </Grid>
-                                            <Grid item xs={12} md={6}>
-                                                <TextField label="이메일을 입력해 주세욤!" disabled={updating} type="email" variant="outlined"
-                                                            fullWidth value={email}
-                                                           onChange={e => setEmail(e.target.value)}/>
-                                            </Grid>
-                                            <Grid item xs={12} md={6}>
-                                                <TextField label="비밀번호를 입력해 주세욤!" variant="outlined" disabled={updating} fullWidth type="password"
-                                                           onChange={e => setPassword(e.target.value)}/>
-                                            </Grid>
-                                            <Grid item xs={12} md={6}>
-                                                <TextField label="새 비밀번호를 입력해 주세욤!" variant="outlined" fullWidth disabled={updating} type="password"
-                                                           onChange={e => setNewPassword(e.target.value)}/>
-                                            </Grid>
-                                            <Grid item xs={12}>
-                                                <Button disabled={updating} onClick={async () => {
-                                                    setUpdating(true)
-                                                    const d = await (await fetch('/api/user/update', {
-                                                        method: 'PATCH',
-                                                        body: JSON.stringify({
-                                                            username, email, password, newPassword
-                                                        }),
-                                                        headers: {
-                                                            'Content-Type': 'application/json',
-                                                            Authorization: 'Bearer ' + localStorage.getItem('token')
-                                                        }
-                                                    })).json()
-                                                    if (d.error) {
-                                                        snackbar.enqueueSnackbar(d.error, {
-                                                            variant: 'error'
-                                                        })
-                                                        return setUpdating(false)
-                                                    }
-                                                    snackbar.enqueueSnackbar('성공적으로 처리되었어욤!', {
-                                                        variant: 'success'
-                                                    })
-                                                    setUpdating(false)
-                                                }} variant="contained" color="primary" style={{width: '100%'}}>
-                                                    {updating ? <CircularProgress size={24}/> : '저장'}
-                                                </Button>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
+                                    <UserEditSection u={u} {...props}/>
                                 </Grid>
                             </Grid>
                             <Dialog open={avatarOpen}>
                                 <DialogTitle>프로필 사진 변경</DialogTitle>
                                 <DialogContent>
                                     <input type="file" accept="image/*" ref={avatarRef} style={{display: 'none'}}
-                                           onChange={e => {
+                                           onChange={async e => {
                                                e.stopPropagation()
                                                e.preventDefault()
                                                const f = e.target.files[0]
-                                               const reader = new FileReader()
-                                               reader.addEventListener('load', () => {
-                                                   setAvatarURL(reader.result)
-                                               })
-                                               if (f) reader.readAsDataURL(f)
+                                               const data = new FormData()
+                                               data.append('file', f)
+                                               setAvatarURL((await Axios.post('/api/upload', data, {
+                                                   headers: {
+                                                       'Content-Type': 'multipart/form-data'
+                                                   }
+                                               })).data.url)
                                            }}/>
                                     <Avatar onClick={() => !avatarUpdating && avatarRef.current.click()} src={avatarURL}
                                             style={{

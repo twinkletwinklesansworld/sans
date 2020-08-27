@@ -99,6 +99,9 @@ class Profile extends Component {
                                                             variant: 'error'
                                                         })
                                                     }
+                                                    if (data.code === 200) {
+                                                        this.props.reloadUser()
+                                                    }
                                                 }}>
                                                     {
                                                         user.followers.includes(u.id) ?

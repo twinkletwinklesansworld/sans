@@ -7,6 +7,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import DialogActions from "@material-ui/core/DialogActions";
 import Button from "@material-ui/core/Button";
+import {withSnackbar} from "notistack";
 
 class Profile extends Component {
     componentDidMount() {
@@ -53,6 +54,12 @@ class Profile extends Component {
                                                         width: 100,
                                                         height: 100
                                                     }} src={user.avatar}/>
+                                                    <Typography align="center">
+                                                        팔로워 {user.followers.length}명
+                                                    </Typography>
+                                                    <Typography align="center">
+                                                        {user.followers.length}명 팔로우중
+                                                    </Typography>
                                                 </Grid>
                                                 <Grid item>
                                                     <Typography variant="h5">
@@ -80,9 +87,19 @@ class Profile extends Component {
                                             </Grid>
                                         </CardContent>
                                         {
-                                            u && <DialogActions>
-                                                <Button>
-                                                    팔로우
+                                            u && this.props.router.query.id !== u.id && <DialogActions>
+                                                <Button onClick={async () => {
+                                                    const data = await (await fetch(`/api/u/${this.props.router.query.id}/follow`)).json()
+                                                    if (data.error) {
+                                                        this.props.enqueueSnackbar(data.error, {
+                                                            variant: 'error'
+                                                        })
+                                                    }
+                                                }}>
+                                                    {
+                                                        user.followers.includes(u.id) ?
+                                                            '팔로우 취소' : '팔로우'
+                                                    }
                                                 </Button>
                                             </DialogActions>
                                         }
@@ -97,4 +114,4 @@ class Profile extends Component {
     }
 }
 
-export default Profile
+export default withSnackbar(Profile)

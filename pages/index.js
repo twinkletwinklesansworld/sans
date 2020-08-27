@@ -22,21 +22,28 @@ export default function Home(props) {
                 <Grid item xs={12} md={6}>
                     <Card>
                         <CardContent>
-                            대충 최근글
+                            최근글
                         </CardContent>
                     </Card>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Card>
                         <CardContent>
-                            대충 인기글
+                             인기글
                         </CardContent>
                     </Card>
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <Card>
                         <CardContent>
-                            대충 광고 <span style={{textDecoration: 'line-through'}}>돈벌자</span>
+                           애드샌스(곧 추가)
+                        </CardContent>
+                    </Card>
+                </Grid>
+          <Grid item xs={12} md={6}>
+                    <Card>
+                        <CardContent>
+                           제안 및 건의
                         </CardContent>
                     </Card>
                 </Grid>

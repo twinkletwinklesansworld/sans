@@ -24,13 +24,13 @@ class Login extends Component {
                             <CardContent>
                                 <Typography variant="h6" align="center">회원가입</Typography>
                                 <Grid item>
-                                    <TextField color="secondary" value={this.state.id} required onChange={e => this.setState({id: e.target.value})} label="아이디" type="text" fullWidth style={{marginBottom: 10}}/>
-                                    <TextField color="secondary" value={this.state.password} required onChange={e => this.setState({password: e.target.value})} label="비밀번호" type="password" fullWidth style={{marginBottom: 10}}/>
-                                    <TextField color="secondary" value={this.state.email} required onChange={e => this.setState({email: e.target.value})} label="이메일" type="email" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.id} required onChange={e => this.setState({id: e.target.value})} label="아이디를 입력해 주세요!" type="text" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.password} required onChange={e => this.setState({password: e.target.value})} label="비밀번호를 입력해 주세요!" type="password" fullWidth style={{marginBottom: 10}}/>
+                                    <TextField color="secondary" value={this.state.email} required onChange={e => this.setState({email: e.target.value})} label="이메일을 입력해 주세요!" type="email" fullWidth style={{marginBottom: 10}}/>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} md={6}>
                                             <Button variant="contained" color="primary" onClick={async () => {
-                                                this.props.enqueueSnackbar('처리중...', {
+                                                this.props.enqueueSnackbar('처리중! 잠시만 기다려주세요!', {
                                                     variant: 'info'
                                                 })
                                                 this.setState({processing: true})
@@ -38,7 +38,8 @@ class Login extends Component {
                                                     method: 'POST',
                                                     body: JSON.stringify({
                                                         id: this.state.id,
-                                                        password: this.state.password
+                                                        password: this.state.password,
+                                                        email: this.state.email
                                                     }),
                                                     headers: {
                                                         'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ class Login extends Component {
                                                     })
                                                 }
                                                 if (data.status === 'success') {
-                                                    this.props.enqueueSnackbar('회원가입이 완료되었습니다. 로그인 해주세요.', {
+                                                    this.props.enqueueSnackbar('회원가입이 완료되었어욤! 로그인 하러 고고~!', {
                                                         variant: 'success'
                                                     })
                                                 }

@@ -55,6 +55,11 @@ class Profile extends Component {
                                                     <Typography variant="h5">
                                                         {user.username || user.id}
                                                     </Typography>
+                                                    {
+                                                        user.username && <Typography>
+                                                            {user.id}
+                                                        </Typography>
+                                                    }
                                                     <AvatarGroup>
                                                         {
                                                             user.roles.map((role, i) => (

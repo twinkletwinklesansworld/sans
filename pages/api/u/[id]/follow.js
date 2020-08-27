@@ -36,9 +36,19 @@ export default async (req, res) => {
         })
     }
 
-    const follow = (await (await r.table('follows').run(db)).toArray()).find(r => r.from === decoded.id && r.target === req.query.target)
+    const follow = (await (await r.table('follows').run(db)).toArray()).find(r => r.from === decoded.id && r.target === req.query.id)
 
-    console.log(follow)
+    if (!follow) {
+        await r.table('follows').insert({
+            from: decoded.id,
+            target: req.query.id
+        }).run(db)
+    } else {
+        await r.table('follows').filter({
+            from: decoded.id,
+            target: req.query.id
+        }).delete().run(db)
+    }
 
-    return res.json({test: true})
+    return res.json({code: 200})
 }

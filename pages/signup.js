@@ -30,7 +30,7 @@ class Login extends Component {
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} md={6}>
                                             <Button variant="contained" color="primary" onClick={async () => {
-                                                this.props.enqueueSnackbar('처리중! 잠시만 기다려주세요!', {
+                                                this.props.enqueueSnackbar('[반반샌월]처리중입니다. 잠시만 기다려주세요...', {
                                                     variant: 'info'
                                                 })
                                                 this.setState({processing: true})
@@ -54,7 +54,7 @@ class Login extends Component {
                                                     })
                                                 }
                                                 if (data.status === 'success') {
-                                                    this.props.enqueueSnackbar('회원가입이 완료되었어욤! 로그인 하러 고고~!', {
+                                                    this.props.enqueueSnackbar('[반반샌월]회원가입이 정상적으로 처리되었습니다. 로그인을 해 주십시오.', {
                                                         variant: 'success'
                                                     })
                                                 }
